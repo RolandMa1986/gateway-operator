@@ -1,0 +1,6 @@
+apiVersion: gateway.kubesphere.io/v1alpha1
+kind: Gateway
+metadata:
+  name: gateway-sample
+spec:
+  replicaCount: 2
