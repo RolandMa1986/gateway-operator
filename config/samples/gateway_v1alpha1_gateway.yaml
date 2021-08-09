@@ -25,6 +25,6 @@ spec:
 
   ## for nginx controller, same with controller
   deployment:
-    annotations: 
+    annotations:
       servicemesh.kubesphere.io/enabled: true
     replicaCount: 2

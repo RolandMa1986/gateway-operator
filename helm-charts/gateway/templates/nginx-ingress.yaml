@@ -1,8 +1,9 @@
 apiVersion: gateway.kubesphere.io/v1alpha1
 kind: Nginx
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ .Release.Name }}-ingress
 spec:
+  fullnameOverride: {{ .Release.Name }}-ingress
   controller:
     name: controller
     image:
