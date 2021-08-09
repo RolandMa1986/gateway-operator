@@ -3,4 +3,28 @@ kind: Gateway
 metadata:
   name: gateway-sample
 spec:
-  replicaCount: 2
+  controller:
+    replicaCount: 1
+    annotations: {}
+    ## Limit the scope of the controller
+    ##
+    scope:
+      enabled: false
+      namespace: ""  # defaults to .Release.Namespace
+    image:
+      repository: kubesphere/ingress-nginx-controller
+      tag: "v0.48.1"
+      pullPolicy: IfNotPresent
+
+
+  service:
+    ## annotations for Services, used for config Cloud LoadBalancer
+    annotations:
+      service.beta.kubernetes.io/qingcloud-load-balancer-eip-ids: "test-ip-id"
+    type: LoadBalancer
+
+  ## for nginx controller, same with controller
+  deployment:
+    annotations: 
+      servicemesh.kubesphere.io/enabled: true
+    replicaCount: 2

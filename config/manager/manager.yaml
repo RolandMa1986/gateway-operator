@@ -30,6 +30,9 @@ spec:
         - --leader-election-id=gateway-operator
         image: controller:latest
         name: manager
+        env:
+          - name: SCOPE_ENABLED
+            value: "true"
         securityContext:
           allowPrivilegeEscalation: false
         livenessProbe:
